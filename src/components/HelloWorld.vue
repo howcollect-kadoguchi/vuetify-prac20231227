@@ -27,6 +27,17 @@
         <v-col cols="auto">
           <v-btn
             color="primary"
+            to="/todo"
+            min-width="228"
+            size="x-large"
+            variant="flat"
+          >
+            ToDo
+          </v-btn>
+        </v-col>
+        <v-col cols="auto">
+          <v-btn
+            color="primary"
             href="https://vuetifyjs.com/introduction/why-vuetify/#feature-guides"
             min-width="228"
             rel="noopener noreferrer"

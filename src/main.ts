@@ -7,6 +7,9 @@
 // Plugins
 import { registerPlugins } from '@/plugins'
 
+import '@mdi/font/css/materialdesignicons.css'
+import '@fortawesome/fontawesome-free/css/all.css'
+
 // Components
 import App from './App.vue'
 

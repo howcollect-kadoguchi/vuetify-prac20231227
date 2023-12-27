@@ -3,7 +3,7 @@
     <v-list>
       <v-list-item
         v-for="item in items"
-        :key="item"
+        :key="item.id"
         :title="item.title"
         :subtitle="item.value"
         prepend-avatar="https://randomuser.me/api/portraits/women/8.jpg"
