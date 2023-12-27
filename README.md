@@ -1,4 +1,9 @@
-# base
+# このプロジェクトはvuetifyを用いています
+
+`yarn create vuetify`のプロジェクトです。
+こちらもTechTrainのプロジェクトの一部をVuetifyで再現しているところです。
+
+使用する際は、`cp .env.local.sample .env.local`をしてから。
 
 ## Project setup
 
