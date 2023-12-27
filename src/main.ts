@@ -16,7 +16,12 @@ import App from './App.vue'
 // Composables
 import { createApp } from 'vue'
 
+// Vuexストアを設定
+import store from './store'
+
 const app = createApp(App)
+
+app.use(store) // Vuexストアを設定
 
 registerPlugins(app)
 

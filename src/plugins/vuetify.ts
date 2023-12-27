@@ -25,12 +25,12 @@ export default createVuetify({
       },
     },
   },
-  icons: {
-    defaultSet: 'fa',
-    aliases,
-    sets: {
-      fa,
-      mdi,
-    },
-  },
+  // icons: {
+  //   defaultSet: 'fa',
+  //   aliases,
+  //   sets: {
+  //     fa,
+  //     mdi,
+  //   },
+  // },
 })

@@ -2,11 +2,11 @@
   <v-app>
     <todo-app-bar />
 
-    <default-view />
+    <todo-view />
   </v-app>
 </template>
 
 <script lang="ts" setup>
 import TodoAppBar from './TodoAppBar.vue'
-import DefaultView from '../default/View.vue'
+import TodoView from './TodoView.vue'
 </script>
