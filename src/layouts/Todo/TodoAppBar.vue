@@ -8,7 +8,7 @@
       <v-card>
         <v-card-title>ユーザ名の変更</v-card-title>
         <v-card-text>
-          <v-form @submit.prevent="login">
+          <v-form @submit.prevent="handleSubmitEditUserName">
             <v-text-field
               label="name*"
               required
@@ -31,6 +31,7 @@
       </v-card>
     </v-dialog>
   </v-row>
+
   <v-app-bar color="primary">
     <template v-slot:prepend>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
@@ -41,7 +42,7 @@
 
     <v-spacer></v-spacer>
 
-    <v-menu open-on-hover>
+    <v-menu open-on-hover v-if="!!userName">
       <template v-slot:activator="{ props }">
         <v-btn color="primary" v-bind="props">
           <v-avatar>
@@ -86,7 +87,45 @@ const userName = ref('')
 
 const formData = ref({ name: '', formChanged: false })
 
+// ページ遷移時に処理を実行
+router.beforeEach(async (to, from, next) => {
+  console.log('ページがロード？')
+  await fetchUserData()
+  next()
+})
+
+// ページ読み込み時に処理を実行
 onMounted(async () => {
+  console.log('OnMounted開始')
+  fetchUserData()
+})
+
+// EditUserNameのイベント
+const handleInputChange = (e) => {
+  formData.value.formChanged = e.target.value !== userName.value
+}
+
+// EditUserName Submit時の処理
+const handleSubmitEditUserName = async () => {
+  const url = import.meta.env.VITE_BASE_URL + '/users'
+
+  try {
+    const headers = {
+      Authorization: `Bearer ${cookies.get('todo_token')}`,
+    }
+
+    const data = { name: formData.value.name }
+
+    const res = await axios.put(url, data, { headers })
+    userName.value = await res.data.name
+    formData.value.name = await res.data.name
+    editUserNamedialogModel.value = !editUserNamedialogModel.value
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+const fetchUserData = async () => {
   // computedを使用してstateやgettersを取得します
   const isLoggedIn = store.getters.isLoggedIn
 
@@ -103,28 +142,9 @@ onMounted(async () => {
     } catch (e) {
       console.error(e)
     }
-  }
-})
-
-const handleInputChange = (e) => {
-  formData.value.formChanged = e.target.value !== userName.value
-}
-const login = async () => {
-  const url = import.meta.env.VITE_BASE_URL + '/users'
-
-  try {
-    const headers = {
-      Authorization: `Bearer ${cookies.get('todo_token')}`,
-    }
-
-    const data = { name: formData.value.name }
-
-    const res = await axios.put(url, data, { headers })
-    userName.value = await res.data.name
-    formData.value.name = await res.data.name
-    editUserNamedialogModel.value = !editUserNamedialogModel.value
-  } catch (e) {
-    console.error(e)
+  } else {
+    userName.value = ''
+    formData.value.name = ''
   }
 }
 
