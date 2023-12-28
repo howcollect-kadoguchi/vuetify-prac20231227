@@ -7,7 +7,8 @@
         :title="item.title"
         :subtitle="item.value"
         prepend-avatar="https://randomuser.me/api/portraits/women/8.jpg"
-      ></v-list-item>
+      >
+      </v-list-item>
     </v-list>
   </v-card>
 

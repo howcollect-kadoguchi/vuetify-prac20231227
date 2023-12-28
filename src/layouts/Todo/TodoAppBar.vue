@@ -1,37 +1,4 @@
 <template>
-  <v-row justify="center">
-    <v-dialog v-model="editUserNamedialogModel">
-      <!-- <edit-user-name-card
-        :init-user-name="userName"
-        @child-closed="editUserNamedialogModel = !editUserNamedialogModel"
-      /> -->
-      <v-card>
-        <v-card-title>ユーザ名の変更</v-card-title>
-        <v-card-text>
-          <v-form @submit.prevent="handleSubmitEditUserName">
-            <v-text-field
-              label="name*"
-              required
-              @input="handleInputChange"
-              v-model="formData.name"
-            ></v-text-field>
-            <v-btn
-              type="submit"
-              color="primary"
-              :disabled="!formData.formChanged"
-              >変更</v-btn
-            >
-            <v-btn
-              color="text"
-              @click="editUserNamedialogModel = !editUserNamedialogModel"
-              >キャンセル</v-btn
-            >
-          </v-form>
-        </v-card-text>
-      </v-card>
-    </v-dialog>
-  </v-row>
-
   <v-app-bar color="primary">
     <template v-slot:prepend>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
@@ -69,6 +36,39 @@
       </v-list>
     </v-menu>
   </v-app-bar>
+
+  <v-row justify="center">
+    <v-dialog v-model="editUserNamedialogModel">
+      <!-- <edit-user-name-card
+        :init-user-name="userName"
+        @child-closed="editUserNamedialogModel = !editUserNamedialogModel"
+      /> -->
+      <v-card>
+        <v-card-title>ユーザ名の変更</v-card-title>
+        <v-card-text>
+          <v-form @submit.prevent="handleSubmitEditUserName">
+            <v-text-field
+              label="name*"
+              required
+              @input="handleInputChange"
+              v-model="formData.name"
+            ></v-text-field>
+            <v-btn
+              type="submit"
+              color="primary"
+              :disabled="!formData.formChanged"
+              >変更</v-btn
+            >
+            <v-btn
+              color="text"
+              @click="editUserNamedialogModel = !editUserNamedialogModel"
+              >キャンセル</v-btn
+            >
+          </v-form>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+  </v-row>
 </template>
 
 <script setup lang="ts">
