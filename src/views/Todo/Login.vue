@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import TodoLoginPage from '@/components/Todo/TodoLoginPage.vue'
+import TodoLoginPage from '@/components/app/Todo/TodoLoginPage.vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 
